@@ -14,8 +14,10 @@ namespace ApiGroupProject.Data
         {
         }
 
-        public DbSet<Employee> Employee { get; set; } = default!;
-        public DbSet<Customer> Customer { get; set; } = default!;
-        public DbSet<Item> Item { get; set; } = default!;
+        public DbSet<Employee> Employees { get; set; } = default!;
+        public DbSet<Customer> Customers { get; set; } = default!;
+        public DbSet<Item> Items { get; set; } = default!;
+        public DbSet<ApiGroupProject.Models.Orderline> Orderline { get; set; } = default!;
+        public DbSet<ApiGroupProject.Models.Order> Order { get; set; } = default!;
     }
 }

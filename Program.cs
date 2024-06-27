@@ -18,7 +18,7 @@ namespace ApiGroupProject
 
             var app = builder.Build();
 
-           // app.UseCors();--needs the add 
+            // app.UseCors();--needs the add 
 
             // Configure the HTTP request pipeline.
 
