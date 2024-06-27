@@ -19,7 +19,7 @@ namespace ApiGroupProject.Models
         public string Description { get; set; }=string.Empty;
 
         [Column(TypeName = "decimal(9,2)")]
-        public decimal price { get; set; }
+        public decimal Price { get; set; }
 
     }
 }

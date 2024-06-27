@@ -19,11 +19,5 @@ namespace ApiGroupProject.Models
         [Column(TypeName ="bit")]
         public bool Active {  get; set; }
 
-
-
-
-
-
-
     }
 }
