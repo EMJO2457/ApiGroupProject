@@ -18,4 +18,12 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="microsoft.EntityframeworkCore.sqlserver" Version="8.0.6" />
+    <PackageReference Include="microsoft.EntityframeworkCore.tools" Version="8.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
 </Project>
