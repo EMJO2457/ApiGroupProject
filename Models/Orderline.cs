@@ -1,6 +1,6 @@
 ﻿namespace ApiGroupProject.Models
 {
-    public class Orderlines
+    public class Orderline
     {
     }
 }
