@@ -8,28 +8,23 @@ namespace ApiGroupProject.Models
     {
         public int Id { get; set; }
 
-        public int CustomerId { get; set; }
-        public virtual Customer? Customer { get; set; }
-        
         [Column(TypeName = "DateTime")]
         public DateTime Date { get; set; }
-
-        [Column(TypeName = "decimal(9,2)")]
-        public decimal Total { get; set; }
-
+        
         [StringLength(80)]
         public string Description { get; set; } = string.Empty;
+
+        public int CustomerId { get; set; }
+        public virtual Customer? Customer { get; set; }
+
         [StringLength(80)]
         public string Status { get; set; } = string.Empty;
         
-
-        
-
-
-
-
+        [Column(TypeName = "decimal(9,2)")]
+        public decimal Total { get; set; }
+       
 
     }
-    }
+}
 
 
