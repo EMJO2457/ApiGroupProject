@@ -8,6 +8,7 @@ namespace ApiGroupProject.Models
 
         [StringLength(30)]
         public string Email { get; set; }=string.Empty;
+
         [StringLength(30)]
         public string Password { get; set; }=string.Empty;
     }
