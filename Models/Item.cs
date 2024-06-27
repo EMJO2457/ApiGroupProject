@@ -8,6 +8,7 @@ namespace ApiGroupProject.Models
         public int Id { get; set; }
         [StringLength(30)]
         public string Name { get; set; } = string.Empty;
+
         [StringLength(30)]
         public string Description { get; set; }=string.Empty;
 
