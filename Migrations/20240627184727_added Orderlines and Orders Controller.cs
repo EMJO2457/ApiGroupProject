@@ -18,7 +18,6 @@ namespace ApiGroupProject.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
                     Date = table.Column<DateTime>(type: "DateTime", nullable: false),
                     Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),

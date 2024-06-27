@@ -10,10 +10,11 @@ namespace ApiGroupProject.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            /*
             migrationBuilder.DropColumn(
                 name: "Description",
                 table: "Order");
-
+            */
             migrationBuilder.RenameColumn(
                 name: "Description",
                 table: "Order",
@@ -36,11 +37,12 @@ namespace ApiGroupProject.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            /*
             migrationBuilder.RenameColumn(
                 name: "Description",
                 table: "Order",
                 newName: "description");
-
+            */
             migrationBuilder.RenameColumn(
                 name: "Price",
                 table: "Items",
