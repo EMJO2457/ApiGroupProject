@@ -9,8 +9,11 @@ namespace ApiGroupProject
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddCors();
 
             var app = builder.Build();
+
+           // app.UseCors();--needs the add 
 
             // Configure the HTTP request pipeline.
 
