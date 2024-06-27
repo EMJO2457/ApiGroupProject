@@ -13,5 +13,6 @@ namespace ApiGroupProject.Models
 
         [Column(TypeName = "decimal(9,2)")]
         public decimal price { get; set; }
+
     }
 }
