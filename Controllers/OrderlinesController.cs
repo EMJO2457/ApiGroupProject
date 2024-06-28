@@ -12,47 +12,47 @@ namespace ApiGroupProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class OrderlinesController : ControllerBase
     {
         private readonly GroupDbContext _context;
 
-        public CustomersController(GroupDbContext context)
+        public OrderlinesController(GroupDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Customers
+        // GET: api/Orderlines
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomer()
+        public async Task<ActionResult<IEnumerable<Orderline>>> GetOrderline()
         {
-            return await _context.Customers.ToListAsync();
+            return await _context.Orderline.ToListAsync();
         }
 
-        // GET: api/Customers/5
+        // GET: api/Orderlines/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(int id)
+        public async Task<ActionResult<Orderline>> GetOrderline(int id)
         {
-            var customer = await _context.Customers.FindAsync(id);
+            var orderline = await _context.Orderline.FindAsync(id);
 
-            if (customer == null)
+            if (orderline == null)
             {
                 return NotFound();
             }
 
-            return customer;
+            return orderline;
         }
 
-        // PUT: api/Customers/5
+        // PUT: api/Orderlines/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCustomer(int id, Customer customer)
+        public async Task<IActionResult> PutOrderline(int id, Orderline orderline)
         {
-            if (id != customer.Id)
+            if (id != orderline.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(customer).State = EntityState.Modified;
+            _context.Entry(orderline).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace ApiGroupProject.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(id))
+                if (!OrderlineExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace ApiGroupProject.Controllers
             return NoContent();
         }
 
-        // POST: api/Customers
+        // POST: api/Orderlines
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
+        public async Task<ActionResult<Orderline>> PostOrderline(Orderline orderline)
         {
-            _context.Customers.Add(customer);
+            _context.Orderline.Add(orderline);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);
+            return CreatedAtAction("GetOrderline", new { id = orderline.Id }, orderline);
         }
 
-        // DELETE: api/Customers/5
+        // DELETE: api/Orderlines/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCustomer(int id)
+        public async Task<IActionResult> DeleteOrderline(int id)
         {
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
+            var orderline = await _context.Orderline.FindAsync(id);
+            if (orderline == null)
             {
                 return NotFound();
             }
 
-            _context.Customers.Remove(customer);
+            _context.Orderline.Remove(orderline);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool CustomerExists(int id)
+        private bool OrderlineExists(int id)
         {
-            return _context.Customers.Any(e => e.Id == id);
+            return _context.Orderline.Any(e => e.Id == id);
         }
     }
 }
