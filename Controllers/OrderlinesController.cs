@@ -25,14 +25,14 @@ namespace ApiGroupProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Orderline>>> GetOrderline()
         {
-            return await _context.Orderline.ToListAsync();
+            return await _context.Orderlines.ToListAsync();
         }
 
         // GET: api/Orderlines/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Orderline>> GetOrderline(int id)
         {
-            var orderline = await _context.Orderline.FindAsync(id);
+            var orderline = await _context.Orderlines.FindAsync(id);
 
             if (orderline == null)
             {
@@ -78,7 +78,7 @@ namespace ApiGroupProject.Controllers
         [HttpPost]
         public async Task<ActionResult<Orderline>> PostOrderline(Orderline orderline)
         {
-            _context.Orderline.Add(orderline);
+            _context.Orderlines.Add(orderline);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetOrderline", new { id = orderline.Id }, orderline);
@@ -88,13 +88,13 @@ namespace ApiGroupProject.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrderline(int id)
         {
-            var orderline = await _context.Orderline.FindAsync(id);
+            var orderline = await _context.Orderlines.FindAsync(id);
             if (orderline == null)
             {
                 return NotFound();
             }
 
-            _context.Orderline.Remove(orderline);
+            _context.Orderlines.Remove(orderline);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace ApiGroupProject.Controllers
 
         private bool OrderlineExists(int id)
         {
-            return _context.Orderline.Any(e => e.Id == id);
+            return _context.Orderlines.Any(e => e.Id == id);
         }
     }
 }
