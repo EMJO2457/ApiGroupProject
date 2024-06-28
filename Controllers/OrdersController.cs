@@ -21,6 +21,26 @@ namespace ApiGroupProject.Controllers
             _context = context;
         }
 
+
+        //GET: api/Status/status
+        [HttpGet("Status/{status}")]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrderStatus(string status)
+        {
+
+            return await _context.Orders.Where(x => x.Status == status).ToListAsync();
+        }
+        
+        //PUT: api/Shipped/5
+        [HttpPut("Shipped/{Id}")]
+        public async Task<IActionResult> ShippedOrder(int Id, Order order)
+        {
+
+            order.Status = "Shipped";
+
+            return await PutOrder(Id, order);
+
+        }
+
         // GET: api/Orders
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
