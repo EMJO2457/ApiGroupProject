@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApiGroupProject.Data;
 using ApiGroupProject.Models;
+using System.Security.Policy;
 
 namespace ApiGroupProject.Controllers
 {
@@ -19,6 +20,25 @@ namespace ApiGroupProject.Controllers
         public EmployeesController(GroupDbContext context)
         {
             _context = context;
+        }
+
+
+        // GET: api/Employees/email/password
+        [HttpGet("{email} {password}")]
+        public async Task<ActionResult<Employee>> Login(string email, string password)
+        {
+            // Find employee based on email and password
+            var employee = await _context.Employees.FirstOrDefaultAsync(c => c.Email == email && c.Password == password);
+
+            if (employee == null)
+            {
+                // Return NotFound or Unauthorized response if employee not found
+                return NotFound();
+                // Or return Unauthorized();
+            }
+
+            // If employee is found, return the Employee object
+            return employee;
         }
 
         // GET: api/Employees

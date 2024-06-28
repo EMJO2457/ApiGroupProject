@@ -21,6 +21,28 @@ namespace ApiGroupProject.Controllers
             _context = context;
         }
 
+        private async Task<IActionResult> RecalculateOrderTotal(int orderId)
+        {
+            var order = await _context.Orders.FindAsync(orderId);
+
+            if (order is null)
+            {
+
+                return NotFound();
+
+            }
+            order.Total = (from ol in _context.Orderlines
+                           join i in _context.Items
+                             on ol.ItemId equals i.Id
+                           where ol.OrderId == orderId
+                           select new
+                           {
+                               LineTotal = ol.Quantity * i.Price
+                           }).Sum(x => x.LineTotal);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
         // GET: api/Orderlines
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Orderline>>> GetOrderline()
