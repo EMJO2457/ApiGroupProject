@@ -73,6 +73,22 @@ namespace ApiGroupProject.Controllers
             return NoContent();
         }
 
+        [HttpGet("{email} {password}")]
+        public async Task<ActionResult<Employee>> Login(string email, string password) {
+            // Find employee based on email and password
+            var employee = await _context.Employees
+                                        .FirstOrDefaultAsync(c => c.Email == email && c.Password == password);
+
+            if (employee == null) {
+                // Return NotFound or Unauthorized response if employee not found
+                return NotFound();
+                // Or return Unauthorized();
+            }
+
+            // If employee is found, return the Employee object
+            return employee;
+        }
+
         // POST: api/Employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

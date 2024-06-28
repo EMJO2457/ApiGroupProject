@@ -42,6 +42,25 @@ namespace ApiGroupProject.Controllers
             return orderline;
         }
 
+        private async Task<IActionResult> RecalculateOrderTotal(int orderId) {
+            var order = await _context.Order.FindAsync(orderId);
+
+            if (order is null) {
+
+                return NotFound();
+
+            }
+            order.Total = (from ol in _context.Orderline
+                           join i in _context.Items
+                             on ol.ItemId equals i.Id
+                           where ol.OrderId == orderId
+                           select new {
+                               LineTotal = ol.Quantity * i.Price
+                           }).Sum(x => x.LineTotal);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
         // PUT: api/Orderlines/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
